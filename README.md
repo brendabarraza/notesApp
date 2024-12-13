@@ -91,9 +91,7 @@ enum TextAlignmentWrapper: String, Codable {
 3. **Organization**: View all your notes in a list and manage their content.
 4. **Draw**: Use PencilKit tools to create graphical ideas.
 
-## License
 
-This project is licensed under the [MIT License](LICENSE).
 
 ---
 
