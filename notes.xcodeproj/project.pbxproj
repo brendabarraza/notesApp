@@ -7,18 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8522CC102CF6724900527CA7 /* paintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8522CC0F2CF6724900527CA7 /* paintApp.swift */; };
+		8522CC102CF6724900527CA7 /* notesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8522CC0F2CF6724900527CA7 /* notesApp.swift */; };
 		8522CC122CF6724900527CA7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8522CC112CF6724900527CA7 /* ContentView.swift */; };
 		8522CC142CF6724B00527CA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8522CC132CF6724B00527CA7 /* Assets.xcassets */; };
 		8522CC172CF6724B00527CA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8522CC162CF6724B00527CA7 /* Preview Assets.xcassets */; };
+		8522CC232CF78E5000527CA7 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8522CC222CF78E5000527CA7 /* NotesViewModel.swift */; };
+		8522CC252CF78E7000527CA7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8522CC242CF78E7000527CA7 /* HomeView.swift */; };
+		8522CC272CF78E9B00527CA7 /* AddNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8522CC262CF78E9B00527CA7 /* AddNoteView.swift */; };
+		8522CC292CF78EC300527CA7 /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8522CC282CF78EC300527CA7 /* NoteDetailView.swift */; };
+		8522CC2B2CF794C300527CA7 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8522CC2A2CF794C300527CA7 /* CanvasView.swift */; };
+		8522CC2D2CF7968C00527CA7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8522CC2C2CF7968C00527CA7 /* Model.swift */; };
+		85A13E652D008088007B3A87 /* AddNoteCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A13E642D008088007B3A87 /* AddNoteCheck.swift */; };
+		85A13E672D0080A3007B3A87 /* AddNoteDibujo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A13E662D0080A3007B3A87 /* AddNoteDibujo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8522CC0C2CF6724900527CA7 /* paint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = paint.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8522CC0F2CF6724900527CA7 /* paintApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paintApp.swift; sourceTree = "<group>"; };
+		8522CC0C2CF6724900527CA7 /* notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8522CC0F2CF6724900527CA7 /* notesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notesApp.swift; sourceTree = "<group>"; };
 		8522CC112CF6724900527CA7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8522CC132CF6724B00527CA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8522CC162CF6724B00527CA7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8522CC222CF78E5000527CA7 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
+		8522CC242CF78E7000527CA7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		8522CC262CF78E9B00527CA7 /* AddNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteView.swift; sourceTree = "<group>"; };
+		8522CC282CF78EC300527CA7 /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
+		8522CC2A2CF794C300527CA7 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		8522CC2C2CF7968C00527CA7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		85A13E642D008088007B3A87 /* AddNoteCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteCheck.swift; sourceTree = "<group>"; };
+		85A13E662D0080A3007B3A87 /* AddNoteDibujo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteDibujo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +51,7 @@
 		8522CC032CF6724900527CA7 = {
 			isa = PBXGroup;
 			children = (
-				8522CC0E2CF6724900527CA7 /* paint */,
+				8522CC0E2CF6724900527CA7 /* notes */,
 				8522CC0D2CF6724900527CA7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,20 +59,23 @@
 		8522CC0D2CF6724900527CA7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8522CC0C2CF6724900527CA7 /* paint.app */,
+				8522CC0C2CF6724900527CA7 /* notes.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8522CC0E2CF6724900527CA7 /* paint */ = {
+		8522CC0E2CF6724900527CA7 /* notes */ = {
 			isa = PBXGroup;
 			children = (
-				8522CC0F2CF6724900527CA7 /* paintApp.swift */,
+				8522CC2C2CF7968C00527CA7 /* Model.swift */,
+				8522CC212CF78E2A00527CA7 /* ViewModel */,
+				8522CC202CF78E0B00527CA7 /* View */,
+				8522CC0F2CF6724900527CA7 /* notesApp.swift */,
 				8522CC112CF6724900527CA7 /* ContentView.swift */,
 				8522CC132CF6724B00527CA7 /* Assets.xcassets */,
 				8522CC152CF6724B00527CA7 /* Preview Content */,
 			);
-			path = paint;
+			path = notes;
 			sourceTree = "<group>";
 		};
 		8522CC152CF6724B00527CA7 /* Preview Content */ = {
@@ -67,12 +86,33 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		8522CC202CF78E0B00527CA7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8522CC242CF78E7000527CA7 /* HomeView.swift */,
+				8522CC262CF78E9B00527CA7 /* AddNoteView.swift */,
+				8522CC282CF78EC300527CA7 /* NoteDetailView.swift */,
+				8522CC2A2CF794C300527CA7 /* CanvasView.swift */,
+				85A13E642D008088007B3A87 /* AddNoteCheck.swift */,
+				85A13E662D0080A3007B3A87 /* AddNoteDibujo.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8522CC212CF78E2A00527CA7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8522CC222CF78E5000527CA7 /* NotesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8522CC0B2CF6724900527CA7 /* paint */ = {
+		8522CC0B2CF6724900527CA7 /* notes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8522CC1A2CF6724B00527CA7 /* Build configuration list for PBXNativeTarget "paint" */;
+			buildConfigurationList = 8522CC1A2CF6724B00527CA7 /* Build configuration list for PBXNativeTarget "notes" */;
 			buildPhases = (
 				8522CC082CF6724900527CA7 /* Sources */,
 				8522CC092CF6724900527CA7 /* Frameworks */,
@@ -82,9 +122,9 @@
 			);
 			dependencies = (
 			);
-			name = paint;
+			name = notes;
 			productName = paint;
-			productReference = 8522CC0C2CF6724900527CA7 /* paint.app */;
+			productReference = 8522CC0C2CF6724900527CA7 /* notes.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +142,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8522CC072CF6724900527CA7 /* Build configuration list for PBXProject "paint" */;
+			buildConfigurationList = 8522CC072CF6724900527CA7 /* Build configuration list for PBXProject "notes" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +155,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8522CC0B2CF6724900527CA7 /* paint */,
+				8522CC0B2CF6724900527CA7 /* notes */,
 			);
 		};
 /* End PBXProject section */
@@ -137,8 +177,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8522CC272CF78E9B00527CA7 /* AddNoteView.swift in Sources */,
+				8522CC232CF78E5000527CA7 /* NotesViewModel.swift in Sources */,
+				85A13E672D0080A3007B3A87 /* AddNoteDibujo.swift in Sources */,
+				85A13E652D008088007B3A87 /* AddNoteCheck.swift in Sources */,
+				8522CC2B2CF794C300527CA7 /* CanvasView.swift in Sources */,
 				8522CC122CF6724900527CA7 /* ContentView.swift in Sources */,
-				8522CC102CF6724900527CA7 /* paintApp.swift in Sources */,
+				8522CC252CF78E7000527CA7 /* HomeView.swift in Sources */,
+				8522CC102CF6724900527CA7 /* notesApp.swift in Sources */,
+				8522CC292CF78EC300527CA7 /* NoteDetailView.swift in Sources */,
+				8522CC2D2CF7968C00527CA7 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +314,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"paint/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"notes/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -279,7 +327,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = b.paint;
+				PRODUCT_BUNDLE_IDENTIFIER = b.notes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -294,7 +342,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"paint/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"notes/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -307,7 +355,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = b.paint;
+				PRODUCT_BUNDLE_IDENTIFIER = b.notes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -318,7 +366,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8522CC072CF6724900527CA7 /* Build configuration list for PBXProject "paint" */ = {
+		8522CC072CF6724900527CA7 /* Build configuration list for PBXProject "notes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8522CC182CF6724B00527CA7 /* Debug */,
@@ -327,7 +375,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8522CC1A2CF6724B00527CA7 /* Build configuration list for PBXNativeTarget "paint" */ = {
+		8522CC1A2CF6724B00527CA7 /* Build configuration list for PBXNativeTarget "notes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8522CC1B2CF6724B00527CA7 /* Debug */,
