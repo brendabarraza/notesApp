@@ -92,15 +92,16 @@ struct Note: Identifiable, Codable {
    <img src="notes/captures/cap1.gif" width="250">
    <img src="notes/captures/cap2.gif" width="250">
    <img src="notes/captures/cap3.gif" width="250">
-   <img src="notes/captures/cap4.gif" width="250">
 </p>
 <p align="center">
+   <img src="notes/captures/cap4.gif" width="250">
    <img src="notes/captures/cap5.gif" width="250">
    <img src="notes/captures/cap6.gif" width="250">
+</p>
+<p align="center">
    <img src="notes/captures/cap7.gif" width="250">
    <img src="notes/captures/cap8.gif" width="250">
 </p>
-
 
 <img src="notes/captures/Frame 6.png" alt="Otra pantalla" width="700">
 <img src="notes/captures/Frame 4.png" alt="Otra pantalla" width="700">
