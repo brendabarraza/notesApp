@@ -88,8 +88,12 @@ struct Note: Identifiable, Codable {
 
 
 ---
-<img src="notes/captures/cap1.gif" width="250">
-<img src="notes/captures/cap2.gif" width="250">
+<p align="center">
+   <img src="notes/captures/cap1.gif" width="250">
+   <img src="notes/captures/cap2.gif" width="250">
+</p>
+
+
 <img src="notes/captures/cap3.gif" width="250">
 <img src="notes/captures/cap4.gif" width="250">
 <img src="notes/captures/cap5.gif" width="250">
