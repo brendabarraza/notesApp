@@ -94,7 +94,7 @@ enum TextAlignmentWrapper: String, Codable {
 
 
 ---
-[Ver el video](notes/captures/Simulator Screen Recording - iPhone 12 Pro Max - 2024-12-18 at 00.10.30.mp4)
+<img src="notes/captures/capture1.gif" width="250">
 
 <img src="notes/captures/Frame 6.png" alt="Otra pantalla" width="700">
 <img src="notes/captures/Frame 4.png" alt="Otra pantalla" width="700">
