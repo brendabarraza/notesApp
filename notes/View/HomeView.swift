@@ -1,50 +1,17 @@
-
 import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = NotesViewModel()
     @State private var showingTypeSelection = false
     @State private var navigationPath: Note.NoteType? = nil
+    @State private var searchText = ""
 
-    
-    
-    
     var body: some View {
         NavigationStack {
             ZStack {
                 VStack {
-                    // Título y botones
-                    HStack {
-                        Text("  All your notes")
-                            .font(.largeTitle)
-                            .padding(.leading)
-                        
-                        Spacer()
-                        
-                        // Botón de lupa
-                        Button(action: {
-                            print("Buscar notas")
-                        }) {
-                            Image(systemName: "magnifyingglass")
-                                .font(.system(size: 20))
-                                .padding()
-                        }
-                        .padding(.trailing)
-
-                        // Botón de tres puntos
-                        Button(action: {
-                            print("Mostrar opciones")
-                        }) {
-                            Image(systemName: "ellipsis")
-                                .font(.system(size: 20))
-                                .padding()
-                        }
-                    }
-                    .padding(.top)
-
-                    // Lista de notas
-                    List(viewModel.notes) { note in
-                        NavigationLink(destination: AddNoteView(viewModel: viewModel, existingNote: note)) {
+                    List(filteredNotes) { note in
+                        NavigationLink(destination: destinationView(for: note)) {
                             HStack {
                                 Image(systemName: icon(for: note.type))
                                     .foregroundColor(.blue)
@@ -52,11 +19,17 @@ struct HomeView: View {
                                     .font(.headline)
                             }
                         }
+                        .contextMenu {
+                            Button(action: {
+                                shareNote(note)
+                            }) {
+                                Label("Share", systemImage: "square.and.arrow.up")
+                            }
+                        }
                     }
-                    .navigationTitle(" ")
+                    .searchable(text: $searchText)
+                    .navigationTitle("")
                 }
-
-                // Botón flotante para añadir una nueva nota
                 VStack {
                     Spacer()
                     HStack {
@@ -72,15 +45,15 @@ struct HomeView: View {
                         .padding()
                         .actionSheet(isPresented: $showingTypeSelection) {
                             ActionSheet(
-                                title: Text("Selecciona el tipo de nota"),
+                                title: Text("Select type of note"),
                                 buttons: [
-                                    .default(Text("Nota de texto")) {
+                                    .default(Text("Text note")) {
                                         navigationPath = .text
                                     },
                                     .default(Text("Checklist")) {
                                         navigationPath = .checklist
                                     },
-                                    .default(Text("Dibujo")) {
+                                    .default(Text("Draw")) {
                                         navigationPath = .drawing
                                     },
                                     .cancel()
@@ -92,7 +65,7 @@ struct HomeView: View {
             }
             .background(
                 NavigationLink(
-                    destination: destinationView(),
+                    destination: AddNoteView(viewModel: viewModel),
                     tag: .text,
                     selection: $navigationPath,
                     label: { EmptyView() }
@@ -110,7 +83,7 @@ struct HomeView: View {
             )
             .background(
                 NavigationLink(
-                    destination: AddNoteDibujo(viewModel: viewModel),
+                    destination: AddNoteDraw(viewModel: viewModel),
                     tag: .drawing,
                     selection: $navigationPath,
                     label: { EmptyView() }
@@ -120,7 +93,6 @@ struct HomeView: View {
         }
     }
 
-    // Función para determinar el icono según el tipo de nota
     private func icon(for type: Note.NoteType) -> String {
         switch type {
         case .text:
@@ -132,29 +104,34 @@ struct HomeView: View {
         }
     }
 
+    private func shareNote(_ note: Note) {
+        let sharedLink = "https://miapp.com/nota/\(note.id)"
+        let activityController = UIActivityViewController(activityItems: [sharedLink], applicationActivities: nil)
+        
+        if let rootViewController = UIApplication.shared.windows.first?.rootViewController {
+            rootViewController.present(activityController, animated: true, completion: nil)
+        }
+    }
+
+    private var filteredNotes: [Note] {
+        if searchText.isEmpty {
+            return viewModel.notes
+        } else {
+            return viewModel.notes.filter { $0.title.lowercased().contains(searchText.lowercased()) }
+        }
+    }
+
     @ViewBuilder
-    private func destinationView() -> some View {
-        switch navigationPath {
+    private func destinationView(for note: Note) -> some View {
+        switch note.type {
         case .text:
-            AddNoteView(viewModel: viewModel, selectedType: .text)
+            AddNoteView(viewModel: viewModel, existingNote: note)
         case .checklist:
-            AddNoteCheck(viewModel: viewModel)
+            AddNoteCheck(viewModel: viewModel, existingNote: note)
         case .drawing:
-            AddNoteDibujo(viewModel: viewModel, selectedType: .drawing)
+            AddNoteDraw(viewModel: viewModel, existingNote: note)
         default:
             EmptyView()
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

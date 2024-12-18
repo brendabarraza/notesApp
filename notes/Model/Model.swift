@@ -1,7 +1,7 @@
-
-
 import Foundation
 import UIKit
+import SwiftUI
+
 import SwiftUI
 
 struct Note: Identifiable, Codable {
@@ -9,6 +9,7 @@ struct Note: Identifiable, Codable {
     var title: String
     var content: String
     var type: NoteType
+    var checklistItems: [ChecklistItem]? 
     var drawingData: Data?
     var fontSize: CGFloat
     var textColor: String
@@ -22,7 +23,23 @@ struct Note: Identifiable, Codable {
         case checklist
         case drawing
     }
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case content
+        case type
+        case checklistItems
+        case drawingData
+        case fontSize
+        case textColor
+        case isBold
+        case isItalic
+        case isUnderlined
+        case textAlignment
+    }
 }
+
 
 enum TextAlignmentWrapper: String, Codable {
     case leading
@@ -46,7 +63,3 @@ enum TextAlignmentWrapper: String, Codable {
         }
     }
 }
-
-
-
-

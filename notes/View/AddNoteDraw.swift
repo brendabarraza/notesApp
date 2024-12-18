@@ -1,7 +1,7 @@
 import SwiftUI
 import PencilKit
 
-struct AddNoteDibujo: View {
+struct AddNoteDraw: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: NotesViewModel
 
@@ -18,7 +18,8 @@ struct AddNoteDibujo: View {
     @State private var type: PKInkingTool.InkType = .pencil
     @State private var isDraw: Bool = true
     @State private var textColor: UIColor = .black
-
+    @State private var checklistItems: [ChecklistItem] = []
+    @State private var showDeleteConfirmation: Bool = false
     init(viewModel: NotesViewModel, existingNote: Note? = nil, selectedType: Note.NoteType = .drawing) {
         self.viewModel = viewModel
         self.existingNote = existingNote
@@ -28,13 +29,11 @@ struct AddNoteDibujo: View {
     var body: some View {
         VStack {
             ZStack {
-                // Fondo general gris
                 Color(UIColor.systemGray6)
                     .ignoresSafeArea()
 
                 VStack {
                     ZStack(alignment: .topLeading) {
-                        // Cambiar diseño basado en el tipo de nota
                         if selectedType == .text || selectedType == .checklist {
                             TextEditor(text: $textContent)
                                 .frame(width: UIScreen.main.bounds.width * 0.85, height: UIScreen.main.bounds.height * 0.65)
@@ -44,16 +43,12 @@ struct AddNoteDibujo: View {
                                 .cornerRadius(10)
                         } else if selectedType == .drawing {
                             VStack {
-                                // Canvas directamente sobre el fondo
                                 CanvasView(canvas: $canvas, color: $color, type: $type, isDraw: $isDraw)
                                     .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.7)
                                     .cornerRadius(10)
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
-                                
-                                // Herramientas de dibujo
                                 HStack {
                                     ColorPicker("", selection: $color)
-
                                     BotonView(action: { type = .pencil }, icon: "pencil")
                                     BotonView(action: { type = .pen }, icon: "pencil.tip")
                                     BotonView(action: { type = .marker }, icon: "highlighter")
@@ -65,7 +60,6 @@ struct AddNoteDibujo: View {
                             }
                         }
                     }
-
                     Spacer()
                 }
             }
@@ -74,14 +68,13 @@ struct AddNoteDibujo: View {
                     Button(action: {
                         showTitleSheet = true
                     }) {
-                        Text(title.isEmpty ? "Nueva Nota" : title)
+                        Text(title.isEmpty ? "New Note" : title)
                             .font(.headline)
                             .foregroundColor(.blue)
                     }
                 }
-
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Guardar") {
+                    Button("Save") {
                         if title.isEmpty {
                             showTitleSheet = true
                         } else {
@@ -90,25 +83,32 @@ struct AddNoteDibujo: View {
                         }
                     }
                 }
+                if let note = existingNote {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            showDeleteConfirmation = true
+                        }) {
+                            Image(systemName: "trash")
+                                .foregroundColor(.red)
+                        }
+                    }
+                }
             }
             .sheet(isPresented: $showTitleSheet) {
                 VStack {
-                    Text("Editar título de la nota")
-                        .font(.subheadline)
-
-                    TextField("Título de la nota", text: $tempTitle)
+                    TextField("Note title", text: $tempTitle)
                         .padding()
                         .textFieldStyle(RoundedBorderTextFieldStyle())
 
                     HStack {
-                        Button("Cancelar") {
+                        Button("Cancel") {
                             showTitleSheet = false
                         }
                         .padding()
 
                         Spacer()
 
-                        Button("Guardar") {
+                        Button("Save") {
                             title = tempTitle.isEmpty ? title : tempTitle
                             showTitleSheet = false
                         }
@@ -116,6 +116,19 @@ struct AddNoteDibujo: View {
                     }
                 }
                 .padding()
+            }
+            .alert(isPresented: $showDeleteConfirmation) {
+                Alert(
+                    title: Text("Are you sure you want to delete this note?"),
+                    message: Text("This action cannot be undone."),
+                    primaryButton: .destructive(Text("Delete")) {
+                        if let note = existingNote {
+                            viewModel.deleteNote(note: note)
+                            dismiss()
+                        }
+                    },
+                    secondaryButton: .cancel()
+                )
             }
         }
         .onAppear {
@@ -134,7 +147,7 @@ struct AddNoteDibujo: View {
 
     private func saveNote() {
         if let note = existingNote {
-            viewModel.updateNote(note: note, title: title, content: textContent, type: selectedType, drawingData: canvas.drawing.dataRepresentation(), fontSize: 0, textColor: textColor.toHex() ?? "#000000", isBold: false, isItalic: false, isUnderlined: false, textAlignment: nil)
+            viewModel.updateNote(note: note, title: title, content: textContent, type: selectedType, drawingData: canvas.drawing.dataRepresentation(), checklistItems: checklistItems, fontSize: 0, textColor: textColor.toHex() ?? "#000000", isBold: false, isItalic: false, isUnderlined: false, textAlignment: nil)
         } else {
             let newNote = Note(
                 id: UUID(),

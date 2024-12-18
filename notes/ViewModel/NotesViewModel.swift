@@ -1,8 +1,7 @@
-
 import SwiftUI
 
 class NotesViewModel: ObservableObject {
-    @Published var notes: [Note] = [] // Array de notas
+    @Published var notes: [Note] = []
 
     init() {
         loadNotes()
@@ -23,24 +22,38 @@ class NotesViewModel: ObservableObject {
     
     func deleteNote(note: Note) {
         notes.removeAll { $0.id == note.id }
-        saveNotes() // Guarda los cambios después de eliminar
+        saveNotes()
     }
 
-    func updateNote(note: Note, title: String, content: String, type: Note.NoteType, drawingData: Data?, fontSize: CGFloat, textColor: String, isBold: Bool, isItalic: Bool, isUnderlined: Bool, textAlignment: TextAlignmentWrapper?) {
+    func updateNote(note: Note,
+                    title: String,
+                    content: String,
+                    type: Note.NoteType,
+                    drawingData: Data?,
+                    checklistItems: [ChecklistItem]?,
+                    fontSize: CGFloat,
+                    textColor: String,
+                    isBold: Bool,
+                    isItalic: Bool,
+                    isUnderlined: Bool,
+                    textAlignment: TextAlignmentWrapper?) {
+        
         if let index = notes.firstIndex(where: { $0.id == note.id }) {
             notes[index].title = title
             notes[index].content = content
             notes[index].type = type
             notes[index].drawingData = drawingData
+            notes[index].checklistItems = checklistItems
             notes[index].fontSize = fontSize
             notes[index].textColor = textColor
             notes[index].isBold = isBold
             notes[index].isItalic = isItalic
             notes[index].isUnderlined = isUnderlined
             notes[index].textAlignment = textAlignment
-            saveNotes() // Guarda los cambios después de actualizar
+            saveNotes()
         }
     }
+
 
 
 
@@ -49,4 +62,3 @@ class NotesViewModel: ObservableObject {
         saveNotes()
     }
 }
-
